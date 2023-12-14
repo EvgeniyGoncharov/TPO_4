@@ -11,6 +11,7 @@ public class Model {
         double first = 0, second = 0;
         for(int i = 0; i < data.length(); i++)
         {
+            if(data.charAt(i) == '|') continue;
             if(data.charAt(i) != '+' && data.charAt(i) != '-' && data.charAt(i) != '*' && data.charAt(i) != '/')
             {
                 numBuffer += data.charAt(i);
@@ -111,7 +112,6 @@ public class Model {
         }
         catch (Exception e)
         {
- //           System.out.println(e.toString());
             Controller.DisplayError(e);
         }
         return result;

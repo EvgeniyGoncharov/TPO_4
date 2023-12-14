@@ -13,6 +13,11 @@ public class Controller implements CalculatorPresenter{
         model = new Model();
         view = new View();
     }
+    public Controller(boolean app)
+    {
+        model = new Model();
+        view = new View(app);
+    }
     public static void arithmeticParser(String data) throws Exception
     {
         double result = model.arithmeticParser(data);
@@ -29,29 +34,15 @@ public class Controller implements CalculatorPresenter{
 
 
 
-    //USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT
-    //USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT
-    //USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT
-    //USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT
-    //USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT USELESS SHIT
-    /**
-     * Вызывается формой в тот момент, когда пользователь нажал на кнопку '+'
-     */
     public void onPlusClicked()
     {
         view.printResult(model.sum(firstArg, secondArg));
     }
 
-    /**
-     * Вызывается формой в тот момент, когда пользователь нажал на кнопку '-'
-     */
     public void onMinusClicked(){
         view.printResult(model.subtract(firstArg, secondArg));
     }
 
-    /**
-     * Вызывается формой в тот момент, когда пользователь нажал на кнопку '/'
-     */
     public void onDivideClicked() throws Exception {
         try{
             res = model.divide(firstArg, secondArg);
@@ -61,9 +52,7 @@ public class Controller implements CalculatorPresenter{
         }
 
     }
-    /**
-     * Вызывается формой в тот момент, когда пользователь нажал на кнопку '*'
-     */
+
     public void onMultiplyClicked() throws Exception {
         view.printResult(model.multiply(firstArg, secondArg));
     };

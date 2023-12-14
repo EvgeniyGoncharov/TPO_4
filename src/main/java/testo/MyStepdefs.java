@@ -19,16 +19,21 @@ public class MyStepdefs {
     private View view;
     @Given("stack calc")
     public void first() {
-        model = new Model();
+        controller = new Controller(true);
+        view = Controller.view;
     }
 
     @When("enter {string}")
     public void second(String arg0) throws Exception {
-        result = model.arithmeticParser(arg0);
+        result = controller.model.arithmeticParser(arg0);
     }
-    @Then("result {double}")
+    @Then("math result is {double}")
     public void third(double arg0) {
         assertEquals(arg0, result, 0.001);
+    }
+    @Then("app result is {double}")
+    public void resultIs(double arg0) {
+        assertEquals(arg0, view.resVal, 0.001);
     }
 
 
@@ -64,14 +69,11 @@ public class MyStepdefs {
             view.zero.doClick();
         }
     }
-    @Then("result is {double}")
-    public void resultIs(double arg0) {
-        assertEquals(arg0, view.resVal, 0.001);
-    }
 
     @Then("arithmetic error")
-    public void arithmeticError() {
+    public void appArithmeticError() {
         ArithmeticException e = new ArithmeticException("Делить на ноль нельзя");
         assertEquals(view.strError, e.toString());
     }
+
 }

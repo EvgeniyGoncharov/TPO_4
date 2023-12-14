@@ -8,7 +8,7 @@ Feature: interface
     When push "*"
     When push "2"
     When push "="
-    Then result is 13
+    Then app result is 13
 
   Scenario: interface and zero divide
     Given open calculator

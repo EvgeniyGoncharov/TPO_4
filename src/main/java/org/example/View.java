@@ -105,6 +105,7 @@ public class View extends JFrame implements CalculatorView{
         add(panel);
 
     }
+    public View(boolean app){}
     class Handler implements ActionListener {
 
         @Override
